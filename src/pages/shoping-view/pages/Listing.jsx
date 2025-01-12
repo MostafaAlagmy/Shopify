@@ -220,6 +220,27 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
 
     }
   },[])
+
+  useEffect(() => {
+    // عند فتح الـ Dialog نضيف حالة جديدة في سجل التاريخ
+    if (openDetailsDialog) {
+      window.history.pushState(null, "", window.location.href);
+    }
+  
+    const handleBackButton = () => {
+      if (openDetailsDialog) {
+        setOpenDetailsDialog(false); // إغلاق الـ Dialog عند الضغط على زر الرجوع
+      }
+    };
+  
+    // الاستماع لحدث popstate
+    window.addEventListener("popstate", handleBackButton);
+  
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [openDetailsDialog]);
+  
  
 
   return (
