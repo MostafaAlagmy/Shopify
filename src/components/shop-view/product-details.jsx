@@ -16,6 +16,9 @@ import { useNavigate } from "react-router-dom";
 
 function ProductDetailsDialog({ open, setOpen, productDetails, handleAddtoCart }) {
 
+  console.log(productDetails,'opennnnnnnnnnnn');
+  
+
   let navigate=useNavigate()
   const [reviewMsg, setReviewMsg] = useState("");
   const [rating, setRating] = useState(0);
@@ -27,7 +30,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails, handleAddtoCart }
   const { toast } = useToast();
 
   function handleRatingChange(getRating) {
-    console.log(getRating, "getRating");
+  
 
     setRating(getRating);
   }
@@ -36,12 +39,15 @@ function ProductDetailsDialog({ open, setOpen, productDetails, handleAddtoCart }
 
 
   function handleDialogClose() {
+    console.log('wooooooooooor');
+    
     setOpen(false);
    
     setRating(0);
     setReviewMsg("");
     dispatch(deleteProductDetails())
   }
+
 
   function handleAddReview() {
     console.log( productDetails?._id,user?.id, user?.userName,reviewMsg,rating);
@@ -77,7 +83,16 @@ function ProductDetailsDialog({ open, setOpen, productDetails, handleAddtoCart }
     });
   }, [productDetails]);
 
-  console.log(reviews, "reviews");
+  useEffect(()=>{
+    return ()=>{
+      dispatch(deleteProductDetails())
+      setOpen(false)
+      
+
+    }
+   },[])
+
+ 
 
   const averageReview =
     reviews && reviews.length > 0

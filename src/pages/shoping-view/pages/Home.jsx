@@ -23,7 +23,7 @@ import ProductDetailsDialog from "@/components/shop-view/product-details";
 import { deleteProductDetails, fetchAllFilteredProducts, fetchProductDetails } from "@/store/shop/productSlice";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { useToast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
@@ -47,6 +47,7 @@ function Home() {
 
     const { toast } = useToast();
     let {user}=JSON.parse(localStorage.getItem('auth'))
+    const {pathname}=useLocation()
 
     
 
@@ -139,13 +140,15 @@ function Home() {
  
    }
 
-   useEffect(()=>{
-    return ()=>{
-      dispatch(deleteProductDetails())
-      setOpenDetailsDialog(false)
-
-    }
-   },[])
+   useEffect(() => {
+    return () => {
+      dispatch(deleteProductDetails());
+      setOpenDetailsDialog(false);
+      console.log(productDetails,'deeeeeeeeeeeeee');
+      
+    };
+  }, [pathname]);
+  
     useEffect(()=>{
        dispatch(fetchAllFilteredProducts({filter:{},sort:'price-lowtohigh'})).then(()=>{
          
@@ -170,6 +173,8 @@ function Home() {
      const handleBackButton = (event) => {
        if (openDetailsDialog) {
          event.preventDefault(); // منع السلوك الافتراضي
+         dispatch(deleteProductDetails())
+
          setOpenDetailsDialog(false); // إغلاق الـ Dialog
          window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
        }

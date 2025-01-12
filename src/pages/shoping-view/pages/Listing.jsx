@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllFilteredProducts, fetchProductDetails,deleteProductDetails } from '@/store/shop/productSlice';
 import ShoppingProductTile from '@/components/shop-view/product-tile';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import ProductDetailsDialog from '@/components/shop-view/product-details';
 import { addToCart, fetchCartItems } from '@/store/shop/cart-slice';
 import { useToast } from '@/hooks/use-toast';
@@ -23,6 +23,7 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
 
   let dispatch=useDispatch()
   let {user}=JSON.parse(localStorage.getItem('auth'))
+  const {pathname}=useLocation()
 
 
   let {productsList,productDetails}=useSelector((state)=>state.shopProducts)
@@ -211,20 +212,26 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
 
   useEffect(() => {
     if (productDetails !== null) setOpenDetailsDialog(true);
+
+    console.log('it is true ');
+    
   }, [productDetails]);
 
-  useEffect(()=>{
-    return ()=>{
-      dispatch(deleteProductDetails())
-      setOpenDetailsDialog(false)
-
-    }
-   },[])
+  useEffect(() => {
+    console.log("Location changed:", pathname);
+    return () => {
+      console.log("Cleaning up...");
+      dispatch(deleteProductDetails());
+      setOpenDetailsDialog(false);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const handleBackButton = (event) => {
       if (openDetailsDialog) {
         event.preventDefault(); // منع السلوك الافتراضي
+        dispatch(deleteProductDetails())
+
         setOpenDetailsDialog(false); // إغلاق الـ Dialog
         window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
       }

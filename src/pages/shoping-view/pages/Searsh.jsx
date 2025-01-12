@@ -79,13 +79,17 @@ function Searsh() {
   }
 
   function handleGetProductDetails(getCurrentProductId) {
-    console.log(getCurrentProductId);
+    
     dispatch(fetchProductDetails(getCurrentProductId));
   }
 
   useEffect(() => {
+    if (productDetails !== null) console.log(productDetails,'pppppppppprrrrrrrrrr');
+    
     if (productDetails !== null) setOpenDetailsDialog(true);
   }, [productDetails]);
+
+  
 
   useEffect(()=>{
     return ()=>{
@@ -100,6 +104,7 @@ function Searsh() {
        if (openDetailsDialog) {
          event.preventDefault(); // منع السلوك الافتراضي
          setOpenDetailsDialog(false); // إغلاق الـ Dialog
+         dispatch(deleteProductDetails())
          window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
        }
      };
