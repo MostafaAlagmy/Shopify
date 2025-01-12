@@ -1,6 +1,6 @@
 import ProductImageUpload from "@/components/admin-view/image-upload";
 import AdminProductTile from "@/components/admin-view/product-tile";
-import CommonForm from "@/components/common/form";
+import Form from "@/components/common/Form";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -150,7 +150,7 @@ function AdminProducts() {
             isEditMode={currentEditedId !== null}
           />
           <div className="py-6">
-            <CommonForm
+            <Form
               onSubmit={onSubmit}
               formData={formData}
               setFormData={setFormData}
