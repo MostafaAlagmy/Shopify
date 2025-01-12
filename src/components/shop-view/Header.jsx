@@ -104,6 +104,29 @@ function HeaderRightContent({setOpenSlideBar}) {
     dispatch(fetchCartItems(user?.id));
   }, [dispatch]);
 
+  useEffect(() => {
+    if (openCartSheet) {
+      window.history.pushState({ cartOpen: true }, ""); // إضافة حالة في سجل المتصفح
+    }
+  }, [openCartSheet]);
+  
+  useEffect(() => {
+    const handleBackButton = (event) => {
+      if (openCartSheet) {
+        event.preventDefault(); // منع الرجوع للصفحة السابقة
+        setOpenCartSheet(false); // إغلاق الـ Cart Sheet
+        window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
+      }
+    };
+  
+    window.addEventListener("popstate", handleBackButton);
+  
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [openCartSheet]);
+  
+
  
 
  
