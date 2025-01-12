@@ -87,7 +87,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails, handleAddtoCart }
 
   return (
     <Dialog open={open} onOpenChange={handleDialogClose}>
-    <DialogContent className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] bg-gray-50 shadow-lg rounded-lg overflow-auto h-[90vh] lg:h-auto lg:max-h-[90vh]  lg:custom-scrollbar  border border-gray-200">
+    <DialogContent className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-[100vw] max-w-[100vw] sm:max-w-[80vw] lg:max-w-[70vw] bg-gray-50 shadow-lg rounded-lg overflow-auto h-[90vh] lg:h-auto lg:max-h-[90vh]  lg:custom-scrollbar  border border-gray-200">
       {/* قسم الصور */}
       <div className="p-4 bg-gray-100">
         <div className="relative w-full rounded-lg">
