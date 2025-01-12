@@ -29,7 +29,7 @@ const Register = () => {
        
        dispatch(LoginUser(formData)).then((data)=>{
              if(data?.payload?.data?.success==true){
-              localStorage.setItem('auth',JSON.stringify( response.data))
+              localStorage.setItem('auth',JSON.stringify(data?.payload?.data))
 
               
                toast({
