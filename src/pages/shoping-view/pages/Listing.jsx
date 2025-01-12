@@ -222,24 +222,24 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
   },[])
 
   useEffect(() => {
-    // عند فتح الـ Dialog نضيف حالة جديدة في سجل التاريخ
-    if (openDetailsDialog) {
-      window.history.pushState(null, "", window.location.href);
-    }
-  
-    const handleBackButton = () => {
+    const handleBackButton = (event) => {
       if (openDetailsDialog) {
-        setOpenDetailsDialog(false); // إغلاق الـ Dialog عند الضغط على زر الرجوع
+        event.preventDefault(); // منع السلوك الافتراضي
+        setOpenDetailsDialog(false); // إغلاق الـ Dialog
+        window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
       }
     };
   
-    // الاستماع لحدث popstate
-    window.addEventListener("popstate", handleBackButton);
+    if (openDetailsDialog) {
+      window.history.pushState({ dialogOpen: true }, ""); // إضافة حالة للـ Dialog
+      window.addEventListener("popstate", handleBackButton);
+    }
   
     return () => {
       window.removeEventListener("popstate", handleBackButton);
     };
   }, [openDetailsDialog]);
+  
   
  
 
