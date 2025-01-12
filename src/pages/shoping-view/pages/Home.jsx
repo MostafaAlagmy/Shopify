@@ -86,6 +86,7 @@ function Home() {
  
     useEffect(() => {
        if (productDetails !== null) setOpenDetailsDialog(true);
+
      }, [productDetails]);
  
    function handleAddtoCart (productId,getTotalStock){
@@ -141,6 +142,8 @@ function Home() {
    useEffect(()=>{
     return ()=>{
       dispatch(deleteProductDetails())
+      setOpenDetailsDialog(false)
+
     }
    },[])
     useEffect(()=>{
@@ -179,6 +182,7 @@ function Home() {
    
      return () => {
        window.removeEventListener("popstate", handleBackButton);
+
      };
    }, [openDetailsDialog]);
 

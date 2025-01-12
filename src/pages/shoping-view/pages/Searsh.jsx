@@ -88,10 +88,12 @@ function Searsh() {
   }, [productDetails]);
 
   useEffect(()=>{
-     ()=>{
-       dispatch(deleteProductDetails())
+    return ()=>{
+      dispatch(deleteProductDetails())
+      setOpenDetailsDialog(false)
+
     }
-  })
+   },[])
 
   useEffect(() => {
      const handleBackButton = (event) => {

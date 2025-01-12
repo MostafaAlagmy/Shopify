@@ -214,12 +214,12 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
   }, [productDetails]);
 
   useEffect(()=>{
-   
     return ()=>{
       dispatch(deleteProductDetails())
+      setOpenDetailsDialog(false)
 
     }
-  },[])
+   },[])
 
   useEffect(() => {
     const handleBackButton = (event) => {
@@ -239,6 +239,7 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
       window.removeEventListener("popstate", handleBackButton);
     };
   }, [openDetailsDialog]);
+
   
   
  
