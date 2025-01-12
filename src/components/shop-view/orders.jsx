@@ -38,8 +38,31 @@ function ShoppingOrders() {
   useEffect(() => {
     if (orderDetails !== null) setOpenDetailsDialog(true);
   }, [orderDetails]);
-
-
+  
+  useEffect(() => {
+    if (orderDetails !== null) {
+      setOpenDetailsDialog(true);
+      window.history.pushState({ dialogOpen: true }, ""); // إضافة حالة في سجل المتصفح
+    }
+  }, [orderDetails]);
+  
+  useEffect(() => {
+    const handleBackButton = (event) => {
+      if (openDetailsDialog) {
+        event.preventDefault(); // منع الرجوع للصفحة السابقة
+        setOpenDetailsDialog(false); // إغلاق الـ Dialog
+        dispatch(resetOrderDetails());
+        window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
+      }
+    };
+  
+    window.addEventListener("popstate", handleBackButton);
+  
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [openDetailsDialog]);
+  
 
   return (
     <Card>
@@ -51,7 +74,7 @@ function ShoppingOrders() {
   <TableHeader>
     <TableRow>
       <TableHead>Order ID</TableHead>
-      <TableHead className="whitespace-nowrap">Order Date</TableHead>
+      <TableHead className="min-w-max whitespace-nowrap">Order Date</TableHead>
       <TableHead className="whitespace-nowrap">Order Status</TableHead>
       <TableHead className="whitespace-nowrap">Order Price</TableHead>
       <TableHead>

@@ -93,7 +93,24 @@ function Searsh() {
     }
   })
 
-  console.log(searchResults, "searchResults");
+  useEffect(() => {
+     const handleBackButton = (event) => {
+       if (openDetailsDialog) {
+         event.preventDefault(); // منع السلوك الافتراضي
+         setOpenDetailsDialog(false); // إغلاق الـ Dialog
+         window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
+       }
+     };
+   
+     if (openDetailsDialog) {
+       window.history.pushState({ dialogOpen: true }, ""); // إضافة حالة للـ Dialog
+       window.addEventListener("popstate", handleBackButton);
+     }
+   
+     return () => {
+       window.removeEventListener("popstate", handleBackButton);
+     };
+   }, [openDetailsDialog]);
 
   return (
     <div className="container mx-auto md:px-6 px-4 py-8">

@@ -163,9 +163,24 @@ function Home() {
 
   }
 
-  useEffect(()=>{
-    window.scrollTo(500,500)
-  },[])
+  useEffect(() => {
+     const handleBackButton = (event) => {
+       if (openDetailsDialog) {
+         event.preventDefault(); // منع السلوك الافتراضي
+         setOpenDetailsDialog(false); // إغلاق الـ Dialog
+         window.history.pushState(null, "", window.location.href); // إعادة حالة التاريخ
+       }
+     };
+   
+     if (openDetailsDialog) {
+       window.history.pushState({ dialogOpen: true }, ""); // إضافة حالة للـ Dialog
+       window.addEventListener("popstate", handleBackButton);
+     }
+   
+     return () => {
+       window.removeEventListener("popstate", handleBackButton);
+     };
+   }, [openDetailsDialog]);
 
   return (
     <div  className="flex flex-col flex-1 min-h-screen">

@@ -27,7 +27,7 @@ const UserCartWrapper = ({setOpenCartSheet,cartItems}) => {
 
    
   return (
-    <SheetContent className="sm:max-w-md w-full h-[100vh] custom-scrollbar overflow-auto px-4 py-6">
+    <SheetContent className="sm:max-w-md w-full h-[100vh] lg:custom-scrollbar overflow-auto px-4 py-6">
     <SheetHeader className="text-center">
       <SheetTitle className="text-2xl font-semibold">Your Cart</SheetTitle>
     </SheetHeader>
