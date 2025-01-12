@@ -11,7 +11,7 @@ import {
 } from "@/store/admin/admin-slice";
 
 import { useToast } from "@/hooks/use-toast";
-import Form from "../common/form";
+import Form from "../common/Form";
 
 const initialFormData = {
   status: "",
