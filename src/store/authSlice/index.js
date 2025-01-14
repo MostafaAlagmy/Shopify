@@ -22,7 +22,7 @@ export  const RegisterUser=createAsyncThunk('/auth/register',
 
     return response
   }catch(error){
-    console.log(error);
+    console.log(error,'error');
     
   }
 
