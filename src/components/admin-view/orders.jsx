@@ -61,10 +61,10 @@ function AdminOrdersView() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Order ID</TableHead>
-              <TableHead>Order Date</TableHead>
-              <TableHead>Order Status</TableHead>
-              <TableHead>Order Price</TableHead>
+              <TableHead className="whitespace-nowrap">Order ID</TableHead>
+              <TableHead className="whitespace-nowrap">Order Date</TableHead>
+              <TableHead className="whitespace-nowrap">Order Status</TableHead>
+              <TableHead className="whitespace-nowrap">Order Price</TableHead>
               <TableHead>
                 <span className="sr-only">Details</span>
               </TableHead>
@@ -74,9 +74,9 @@ function AdminOrdersView() {
             {orderList && orderList.length > 0
               ? orders.map((orderItem) => (
                   <TableRow>
-                    <TableCell>{orderItem?._id}</TableCell>
-                    <TableCell>{orderItem?.orderDate.split("T")[0]}</TableCell>
-                    <TableCell>
+                    <TableCell className="whitespace-nowrap">{orderItem?._id}</TableCell>
+                    <TableCell className="whitespace-nowrap">{orderItem?.orderDate.split("T")[0]}</TableCell>
+                    <TableCell className="whitespace-nowrap">
                       <Badge
                         className={`py-1 px-3 ${
                           orderItem?.orderStatus === "confirmed"

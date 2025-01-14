@@ -6,12 +6,12 @@ import { Outlet } from "react-router-dom"
 const Adminlayout = () => {
   const[openSleide,seteOpenSlide]=useState(false)
   return (
-    <div className="flex flex-1 w-full min-h-screen">
+    <div className="flex flex-1 w-full  min-h-screen">
       <AdminSideBar open={openSleide} setOPen={seteOpenSlide}/>
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1  w-full  overflow-auto flex-col">
         <Header setopen={seteOpenSlide}/>
 
-        <section className="flex-1 flex-col flex bg-muted/40 p-4 md:p-6"> 
+        <section className="flex-1  flex-col  flex bg-muted/40 p-4 md:p-6 "> 
           <Outlet>
 
           </Outlet>

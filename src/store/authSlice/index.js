@@ -44,6 +44,9 @@ export  const LoginUser=createAsyncThunk('/auth/login',
 
     )
 
+    console.log(response);
+    
+
 
     return response
   }catch(error){
