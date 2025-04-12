@@ -7,7 +7,7 @@ let initialState={
     productDetails:null
 }
 export const fetchAllFilteredProducts = createAsyncThunk(
-    "/products/fetchAllProducts",
+    "https://backnew-b4fj.vercel.app/products/fetchAllProducts",
     async ({filter,sort}) => {
       
         const query= new URLSearchParams({
@@ -22,7 +22,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
 
         try {
             const result = await axios.get(
-                `https://e-coomerce-backend2-production.up.railway.app/api/shop/products/get?${query}`
+                `https://backnew-b4fj.vercel.app/api/shop/products/get?${query}`
               );
           
              
@@ -44,7 +44,7 @@ export const fetchProductDetails = createAsyncThunk(
     "/products/fetchProductDetails",
     async (id) => {
       const result = await axios.get(
-        `https://e-coomerce-backend2-production.up.railway.app/api/shop/products/get/${id}`
+        `https://backnew-b4fj.vercel.app/api/shop/products/get/${id}`
       );
   
       return result?.data;

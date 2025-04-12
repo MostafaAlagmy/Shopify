@@ -13,7 +13,7 @@ export  const RegisterUser=createAsyncThunk('/auth/register',
     
   
 
-    let response=await axios.post('https://e-coomerce-backend2-production.up.railway.app/api/auth/register',
+    let response=await axios.post('https://backnew-b4fj.vercel.app/api/auth/register',
       formData,{
         withCredentials: true,
       }
@@ -37,7 +37,7 @@ export  const LoginUser=createAsyncThunk('/auth/login',
     
   
 
-    let response=await axios.post('https://e-coomerce-backend2-production.up.railway.app/api/auth/login',
+    let response=await axios.post('https://backnew-b4fj.vercel.app/api/auth/login',
       formData,{
         withCredentials: true,
       }
@@ -61,7 +61,7 @@ export const checkAuth = createAsyncThunk(
 
   async () => {
     const response = await axios.get(
-      "https://e-coomerce-backend2-production.up.railway.app/api/auth/check-auth",
+      "https://backnew-b4fj.vercel.app/api/auth/check-auth",
       {
         withCredentials: true,
         headers: {
@@ -82,7 +82,7 @@ export const logoutUser = createAsyncThunk(
 
   async () => {
     const response = await axios.post(
-      "https://e-coomerce-backend2-production.up.railway.app/api/auth/logout",
+      "https://backnew-b4fj.vercel.app/api/auth/logout",
       {},
       {
         withCredentials: true,

@@ -11,7 +11,7 @@ export const addReview = createAsyncThunk(
   async (formdata) => {
 
     const response = await axios.post(
-      `https://e-coomerce-backend2-production.up.railway.app/api/shop/review/add`,
+      `https://backnew-b4fj.vercel.app/api/shop/review/add`,
       formdata
     );
     console.log(response.data,'data');
@@ -25,7 +25,7 @@ export const getReviews = createAsyncThunk("/order/getReviews", async (id) => {
    
 
   const response = await axios.get(
-    `https://e-coomerce-backend2-production.up.railway.app/api/shop/review/${id}`
+    `https://backnew-b4fj.vercel.app/api/shop/review/${id}`
   );
 
   console.log(response.data,'newwwawa');

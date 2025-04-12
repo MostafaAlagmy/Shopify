@@ -10,7 +10,7 @@ export const getFeatureImages = createAsyncThunk(
   "/order/getFeatureImages",
   async () => {
     const response = await axios.get(
-      `https://e-coomerce-backend2-production.up.railway.app/api/common/feature/get`
+      `https://backnew-b4fj.vercel.app/api/common/feature/get`
     );
 
     return response.data;
@@ -21,7 +21,7 @@ export const addFeatureImage = createAsyncThunk(
   "/order/addFeatureImage",
   async (image) => {
     const response = await axios.post(
-      `https://e-coomerce-backend2-production.up.railway.app/api/common/feature/add`,
+      `https://backnew-b4fj.vercel.app/api/common/feature/add`,
       { image }
     );
 

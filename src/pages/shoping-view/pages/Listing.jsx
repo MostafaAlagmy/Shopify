@@ -62,17 +62,7 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
 
   },[filters])
 
-  useEffect(()=>{
-  //  if(categorySearchParam ){
-  //   console.log('hiiiiiiii');
-    
-  //   setSort("price-lowtohigh");
-  //   setFilters(JSON.parse( sessionStorage.getItem('filters')))
-  //   console.log(filters);
-    
-  //  }
-
-  },[categorySearchParam])
+  
 
  
 
@@ -252,7 +242,7 @@ const Listing = ({setdisplayCheck,displayCheck}) => {
  
 
   return (
-    <div className=" grid grid-cols-1 bg-aqua flex-1 md:grid-cols-[200px_1fr]  gap-6 p-4 md:p-6">
+    <div className=" grid grid-cols-1 bg-aqua flex-1 md:grid-cols-[200px_1fr] h-auto gap-6 p-4 md:p-6">
       <ShowFilter handleFilter={handleFilter} displayCheck={displayCheck} setdisplayCheck={setdisplayCheck} filters={filters} />
     <div className="bg-background  w-full rounded-lg shadow-sm">
       <div className="p-4 border-b flex items-center justify-between">

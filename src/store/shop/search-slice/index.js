@@ -10,7 +10,7 @@ export const getSearchResults = createAsyncThunk(
   "/order/getSearchResults",
   async (keyword) => {
     const response = await axios.get(
-      `https://e-coomerce-backend2-production.up.railway.app/api/shop/search/${keyword}`
+      `https://backnew-b4fj.vercel.app/api/shop/search/${keyword}`
     );
     console.log(response,'seeeeeeeeeeeeeeeeeeeee');
     
